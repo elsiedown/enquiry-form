@@ -7,13 +7,14 @@
   padding: 20px;
 }
 
-img {
-  height: 70px;
-  width: 100px;;
-  object-fit: cover;
-  margin: 0;
-  display: block;
-  margin-left: auto;
+.form-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  border: 1px #011041 solid;
+  border-radius: 3%;
 }
 
 h1 {
@@ -28,8 +29,17 @@ p {
   margin-bottom: 30px;
   color: grey;
   font-weight: 800;
+  text-align: Center;
 }
 
+img {
+  height: 90px;
+  width: 120px;;
+  object-fit: cover;
+  margin: 0;
+  display: block;
+  margin-left: auto;
+}
 
 .field {
   display: flex;

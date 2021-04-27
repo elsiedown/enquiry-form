@@ -1,0 +1,18 @@
+@import '~bulma/bulma.sass';
+.main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+h1 {
+  color: navy;
+  font-size: 50px;
+}
+
+p {
+  font-style: italic;
+}
+

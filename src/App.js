@@ -1,22 +1,13 @@
 
-import { useForm } from 'react-hook-form'
 import React from 'react'
-// import useHookForm from './hooks/useForm'
+import { useForm } from 'react-hook-form'
 
 function App() {
 
-  const { register, errors } = useForm();
+  const { register, formState: { errors }, handleSubmit } = useForm();
 
-  // const { formdata, handleChange } = useHookForm({
-  //   type: '',
-  //   date: '',
-  //   query: '',
-  // })
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('hello')
-    // console.log(`Query Recieved from ${JSON.stringify(formdata, null, 2)}`)
+  const onSubmit = (data) => {
+    console.log(data)
   }
 
 
@@ -24,13 +15,12 @@ function App() {
     <div className="main">
       <h1>Payroll Enquiry</h1>
       <p>Please use this form for any Payroll related enquiries.</p>
-      <form className="column is-offset" onSubmit={handleSubmit}>
+      <form className="column is-offset" onSubmit={handleSubmit(onSubmit)}>
         <div className="field">
           <label className="label">What does your enquiry relate to?</label>
           <div className="select">
             <select name="type"
-            // onChange={handleChange} 
-            // value={formdata.type}
+            {...register("type", { required: true })}
             >
               <option value="" ></option>
               <option value="Incorrect Pay">Incorrect Pay</option>
@@ -40,6 +30,7 @@ function App() {
               <option value="other">Other</option>
             </select>
           </div>
+          {errors.type && "Type is required"}
         </div>
         <div className="field">
           <label className="label"> Date of payslip being queried (if applicable)</label>
@@ -47,20 +38,13 @@ function App() {
             <input
               type="date"
               name="date"
-            // value={formdata.date}
-            // onChange={handleChange}
-            // ref={register({
-            //   required: { value: true, message: 'Please enter your name' },
-            //   maxLength: {
-            //     value: 30,
-            //     message: 'Please use 30 characters or less'
-            //   }
-            // })}
+              {...register("date", { required: true })}
             />
           </div>
+          {errors.date && "Date is required"}
         </div>
         <div className="is-fullwidth">
-          <label className="label">Message *</label>
+          <label className="label">Query</label>
           <div className="control is-fullwidth">
             <textarea
               className='input is-fullwidth'
@@ -69,17 +53,14 @@ function App() {
               rows={4}
               name="query"
               {...register("query", { required: true })}
-
-
             />
-            {errors.query && <span>This field is required</span>}
           </div>
+          {errors.query && "Query is required"}
         </div>
         <div className="field field-button">
-          <button type="submit" className="button"  >Send</button>
+          <button type="submit" className="button">Send</button>
         </div>
       </form>
-
     </div>
 
 

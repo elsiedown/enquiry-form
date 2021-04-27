@@ -1,33 +1,45 @@
 import React from 'react'
-// import useHookForm from './hooks/useHookForm'
 import { useForm } from 'react-hook-form'
+import Blink from './images/blink-logo.png'
 
 function App() {
 
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const {  handleSubmit } = useForm();
 
+  const [dateRequired, setDateRequired] = React.useState(false)
 
+  const [enquiry, setEnquiry] = React.useState('')
+  const [date, setDate] = React.useState('')
+  const [query, setQuery] = React.useState('')
 
-  // const [dateRequired, setDateRequired] = React.useState(false)
-  // const [enquiryType, setEnquiryType] = React.useState('')
-
-  // const handleChange = (event) => {
-  //   console.log('fruit selected')
-  //   setEnquiryType(event.target.value)
-  //   if (enquiryType === "1" || enquiryType === "2") {
-  //     return setDateRequired(!dateRequired)
-  //   }
-  //   console.log(event.target.value)
-  // }
-
-  const onSubmit = (data) => {
-    console.log(data)
+  const dateValidation = (event) => {
+    const value = event.target.value
+    setEnquiry(value)
+    if (value === 'Incorrect Pay' || value === 'Missing Expense') {
+      setDateRequired(true)
+    } else {
+      setDateRequired(false)
+    }
   }
+
+  const handleDateChange = (event) => {
+    setDate(event.target.value)
+  }
+
+  const handleQueryChange = (event) => {
+    setQuery(event.target.value)
+  }
+
+  const onSubmit = () => {
+    console.log(`Enquiry received relating to ${enquiry} - Date (if applicable): ${date} - Message: ${query}`)
+  }
+
 
 
 
   return (
     <div className="main">
+      <img src={Blink} alt="logo"></img>
       <h1>Payroll Enquiry</h1>
       <p>Please use this form for any Payroll related enquiries.</p>
       <form className="column is-offset" onSubmit={handleSubmit(onSubmit)}>
@@ -36,30 +48,33 @@ function App() {
           <div>
             <select
               className="select"
-              name="selectBox"
-              {...register("type", { required: true })}
+              name="type"
+              id="type"
+              onChange={dateValidation}
+              required={true}
             >
               <option value=""></option>
-              <option value="1">Incorrect Pay</option>
-              <option value="2">Missing Expense</option>
-              <option value="3">Change of Bank Details</option>
-              <option value="4">Change of Address</option>
-              <option value="5">Other</option>
+              <option value="Incorrect Pay">Incorrect Pay</option>
+              <option value="Missing Expense">Missing Expense</option>
+              <option value="Change of Bank Details">Change of Bank Details</option>
+              <option value="Change of Address">Change of Address</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </div>
-        {errors.type && <p className="error-message">Please select an Option</p>}
-        <div className="field">
-          <label className="label"> Date of payslip being queried (if applicable)</label>
-          <div className="control">
-            <input
-              type="date"
-              name="date"
-              {...register("date", { required: true })}
-            />
+        {dateRequired &&
+          <div className="field">
+            <label className="label"> Date of payslip being queried *</label>
+            <div className="control">
+              <input
+                type="date"
+                name="date"
+                required={true}
+                onChange={handleDateChange}
+              />
+            </div>
           </div>
-        </div>
-        {errors.date && <p className="error-message">Please enter the Date</p>}
+        }
         <div className="is-fullwidth">
           <label className="label">Query *</label>
           <div className="control is-fullwidth">
@@ -67,12 +82,11 @@ function App() {
               className='input is-fullwidth'
               placeholder="Your Query"
               name="query"
-              {...register("query", { required: true })}
+              required={true}
+              onChange={handleQueryChange}
             />
           </div>
-          {errors.query && <p className="error-message">Please enter your Query</p>}
         </div>
-        
         <div className="field field-button">
           <button type="submit" className="button">Send</button>
         </div>

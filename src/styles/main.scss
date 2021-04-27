@@ -7,8 +7,17 @@
   padding: 20px;
 }
 
+img {
+  height: 70px;
+  width: 100px;;
+  object-fit: cover;
+  margin: 0;
+  display: block;
+  margin-left: auto;
+}
+
 h1 {
-  color: navy;
+  color: #011041;
   font-size: 50px;
   margin: 20px;
   margin-bottom: 40px;
@@ -17,12 +26,10 @@ h1 {
 p {
   font-style: italic;
   margin-bottom: 30px;
+  color: grey;
+  font-weight: 800;
 }
 
-span {
-  color: red;
-  font-size: 10px;
-}
 
 .field {
   display: flex;
@@ -31,6 +38,8 @@ span {
 label.label {
   font-size: 13px;
   margin-right: 20px;
+  color: #011041;
+
 }
 
 .field-button {
@@ -38,8 +47,4 @@ label.label {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-}
-
-p.error-message {
-  color: red;
 }

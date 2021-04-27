@@ -84,7 +84,7 @@ function App() {
                 <label className="label">Query *</label>
                 <div className="control is-fullwidth">
                   <textarea
-                    className='input is-fullwidth'
+                    className='input is-fullwidth textarea'
                     placeholder="Please give details of the Query"
                     name="query"
                     required={true}

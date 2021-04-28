@@ -1,8 +1,8 @@
 import React from 'react'
 
 function useForm(initialState) {
-
   const [formdata, setFormdata] = React.useState(initialState)
+
    const [dateRequired, setDateRequired] = React.useState(false)
 
   const handleChange = event => {
@@ -13,6 +13,8 @@ function useForm(initialState) {
     const nextState = { ...formdata, [event.target.name]: event.target.value }
     setFormdata(nextState)
   }
+
+ 
 
   return {
     formdata,

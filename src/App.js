@@ -15,7 +15,7 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault()
     setEnquirySent(true)
-    console.log(`New Enquiry: ${JSON.stringify(formdata, null, 2)}`)
+    console.log(`New Payroll Enquiry: ${JSON.stringify(formdata, null, 2)}`)
   }
 
   return (

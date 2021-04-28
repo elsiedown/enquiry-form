@@ -1,4 +1,4 @@
-# Blink Enquiry Form
+# Payroll Enquiry Form
 
 A digital payroll enquiry form to make the system more efficient and easier. Built using React, JavScript, Html & CSS.
 

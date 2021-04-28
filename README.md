@@ -25,6 +25,7 @@ A digital payroll enquiry form to make the system more efficient and easier. Bui
 
 * I initially started using react-hook-form but had difficulty trying to implement the conditional statement for the date field and therefore ended up using my own useForm component. 
 * I spent more than two hours on the task (I think I spent a total of 3 hours on it) - I spent too much time trying to figure out the react-hook-form and in future would have made the decision to use my own component earlier on. 
+* I didn't have time / manage to get onto writing any tests!
 
 
 
